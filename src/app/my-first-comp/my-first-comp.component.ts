@@ -44,4 +44,8 @@ export class MyFirstCompComponent {
   // onClickSubmitButton() {
   //   console.log(this.name);
   // }
+
+  deleteItem(index: number) {
+    this.messages.splice(index, 1);
+  }
 }

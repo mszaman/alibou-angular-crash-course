@@ -1,0 +1,12 @@
+<div class="border-green-400 border rounded-md">
+  <div class="bg-green-500 p-2 rounded-t-md text-center">
+    <p class="text-xl">{{ message.name }}</p>
+    <p class="font-semibold">{{ message.email }}</p>
+  </div>
+  <p class="p-2">{{ message.message }}</p>
+  <div class="p-2">
+    <button class="text-sm bg-gray-400 px-2 py-1 rounded" (click)="onDelete()">
+      Delete
+    </button>
+  </div>
+</div>

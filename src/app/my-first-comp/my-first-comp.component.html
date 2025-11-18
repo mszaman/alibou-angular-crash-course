@@ -1,5 +1,5 @@
-<div class="p-6 bg-white shadow-lg rounded-lg">
-  <form class="flex flex-col gap-3" (ngSubmit)="onSubmit()">
+<div class="bg-white shadow-lg rounded-lg my-5">
+  <form class="flex flex-col gap-3 p-6" (ngSubmit)="onSubmit()">
     <!-- <form class="flex flex-col gap-3"> -->
     <p class="text-2xl font-semibold text-center">Simple Form</p>
     <div class="flex flex-col gap-1">
@@ -43,7 +43,7 @@
     ></button> -->
   </form>
   <div *ngIf="isSubmitted" class="my-5">
-    <p class="mb-2 text-2xl font-semibold text-center">Form Data</p>
+    <p class="text-2xl font-semibold text-center">Form Data</p>
     <!-- Show Variable data -->
     <!-- <div class="flex flex-col gap-2">
       <p><span class="text-sm font-semibold">Name: </span>{{ name }}</p>
@@ -52,21 +52,36 @@
     </div> -->
 
     <!-- Show list data using for loop -->
-    <table class="w-full">
+    <!-- <table class="w-full">
       <thead class="text-sm">
         <tr>
+          <th>#</th>
           <th>Name</th>
           <th>Email</th>
           <th>Message</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let msg of messages">
+        <tr *ngFor="let msg of messages; let i = index">
+          <td>{{ i + 1 }}</td>
           <td>{{ msg.name }}</td>
           <td>{{ msg.email }}</td>
           <td>{{ msg.message }}</td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
+
+    <div
+      class="flex flex-row flex-wrap justify-between p-4"
+      *ngIf="isSubmitted"
+    >
+      <app-message-details
+        class="w-1/2 p-4"
+        *ngFor="let msg of messages; let i = index"
+        [message]="msg"
+        [index]="i"
+        (itemToDelete)="deleteItem($event)"
+      ></app-message-details>
+    </div>
   </div>
 </div>
