@@ -1,58 +1,62 @@
-<div class="bg-white shadow-lg rounded-lg my-5">
-  <form class="flex flex-col gap-3 p-6" (ngSubmit)="onSubmit()">
-    <!-- <form class="flex flex-col gap-3"> -->
+<div class="w-1/2 bg-gray-100 mx-auto">
+  <div class="bg-white shadow-lg rounded-lg">
     <p class="text-2xl font-semibold text-center">Simple Form</p>
-    <div class="flex flex-col gap-1">
-      <label for="name" class="text-sm font-semibold">Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        #nameInputField
-        [(ngModel)]="name"
-        class="rounded-md px-2 py-1 ring-1 ring-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-2"
-      />
-    </div>
-    <div class="flex flex-col gap-1">
-      <label for="email" class="text-sm font-semibold">Email</label>
-      <input
-        type="text"
-        id="email"
-        name="email"
-        [(ngModel)]="email"
-        class="rounded-md px-2 py-1 ring-1 ring-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-2"
-      />
-    </div>
-    <div class="flex flex-col gap-1">
-      <label for="message" class="text-sm font-semibold">Message</label>
-      <input
-        type="text"
-        id="message"
-        name="message"
-        [(ngModel)]="message"
-        class="rounded-md px-2 py-1 ring-1 ring-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-2"
-      />
-    </div>
-    <button type="submit" class="bg-green-500 rounded-md w-fit px-6 py-1 mt-1">
-      Submit
-    </button>
-    <!-- Event without button type submit
+    <form class="flex flex-col gap-3 p-6" (ngSubmit)="onSubmit()">
+      <!-- <form class="flex flex-col gap-3"> -->
+      <div class="flex flex-col gap-1">
+        <label for="name" class="text-sm font-semibold">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          #nameInputField
+          [(ngModel)]="name"
+          class="rounded-md px-2 py-1 ring-1 ring-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-2"
+        />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="email" class="text-sm font-semibold">Email</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          class="rounded-md px-2 py-1 ring-1 ring-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-2"
+        />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="message" class="text-sm font-semibold">Message</label>
+        <input
+          type="text"
+          id="message"
+          name="message"
+          [(ngModel)]="message"
+          class="rounded-md px-2 py-1 ring-1 ring-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-2"
+        />
+      </div>
+      <button
+        type="submit"
+        class="bg-green-500 rounded-md w-fit px-6 py-1 mt-1"
+      >
+        Submit
+      </button>
+      <!-- Event without button type submit
     <button
       (click)="onClickSubmitButton()"
       class="bg-green-500 rounded-md w-fit px-6 py-1 mt-1"
     ></button> -->
-  </form>
-  <div *ngIf="isSubmitted" class="my-5">
-    <p class="text-2xl font-semibold text-center">Form Data</p>
-    <!-- Show Variable data -->
-    <!-- <div class="flex flex-col gap-2">
+    </form>
+    <div *ngIf="isSubmitted" class="my-5">
+      <p class="text-2xl font-semibold text-center">Form Data</p>
+      <!-- Show Variable data -->
+      <!-- <div class="flex flex-col gap-2">
       <p><span class="text-sm font-semibold">Name: </span>{{ name }}</p>
       <p><span class="text-sm font-semibold">Email: </span>{{ email }}</p>
       <p><span class="text-sm font-semibold">Message: </span>{{ message }}</p>
     </div> -->
 
-    <!-- Show list data using for loop -->
-    <!-- <table class="w-full">
+      <!-- Show list data using for loop -->
+      <!-- <table class="w-full">
       <thead class="text-sm">
         <tr>
           <th>#</th>
@@ -71,17 +75,18 @@
       </tbody>
     </table> -->
 
-    <div
-      class="flex flex-row flex-wrap justify-between p-4"
-      *ngIf="isSubmitted"
-    >
-      <app-message-details
-        class="w-1/2 p-4"
-        *ngFor="let msg of messages; let i = index"
-        [message]="msg"
-        [index]="i"
-        (itemToDelete)="deleteItem($event)"
-      ></app-message-details>
+      <div
+        class="flex flex-row flex-wrap justify-between p-4"
+        *ngIf="isSubmitted"
+      >
+        <app-message-details
+          class="w-1/2 p-4"
+          *ngFor="let msg of messages; let i = index"
+          [message]="msg"
+          [index]="i"
+          (itemToDelete)="deleteItem($event)"
+        ></app-message-details>
+      </div>
     </div>
   </div>
 </div>
