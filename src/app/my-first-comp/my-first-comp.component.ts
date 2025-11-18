@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { MyFirstService } from '../services/my-first.service';
 
 @Component({
   selector: 'app-my-first-comp',
@@ -17,18 +18,29 @@ export class MyFirstCompComponent {
   @ViewChild('nameInputField')
   nameInputField!: ElementRef;
 
+  constructor(private service: MyFirstService) {
+    this.messages = service.getAllMessages();
+    this.isSubmitted = this.messages.length > 0;
+  }
+
   ngAfterViewInit() {
     this.nameInputField.nativeElement.focus();
   }
 
   onSubmit() {
-    this.messages.push({
+    this.service.insertMessage({
       name: this.name,
       email: this.email,
       message: this.message,
     });
 
-    this.isSubmitted = true;
+    // this.messages.push({
+    //   name: this.name,
+    //   email: this.email,
+    //   message: this.message,
+    // });
+
+    // this.isSubmitted = true;
     this.name = '';
     this.email = '';
     this.message = '';
@@ -46,6 +58,7 @@ export class MyFirstCompComponent {
   // }
 
   deleteItem(index: number) {
-    this.messages.splice(index, 1);
+    // this.messages.splice(index, 1);
+    this.service.deleteMessage(index);
   }
 }
